@@ -1,16 +1,24 @@
 pipeline {
     agent any
-	
+	environment { 
+3
+        registry = "pdockersavant/jenkins-cicd-docker" 
+4
+        registryCredential = 'dockerhub' 
+5
+        dockerImage = '' 
+6
+    }
 
  stages {
-      stage('checkout') {
+      stage('Checkout') {
            steps {
              
                 git branch: 'master', url: 'https://github.com/pravinksavant/CI-CD-using-Docker.git'
              
           }
         }
-	 stage('Execute Maven') {
+	 stage('Build App') {
            steps {
              
                 sh 'mvn package'             
@@ -28,13 +36,13 @@ pipeline {
         }
      
   stage('Publish image to Docker Hub') {
-          
-            steps {
-       // withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push pdockersavant/demowebapp:latest'
-        //   }
-                  
-          }
+           steps { 
+                script { 
+                   docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
         }
      
       stage('Run Docker container') {
