@@ -1,13 +1,9 @@
 pipeline {
     agent any
 	environment { 
-3
         registry = "pdockersavant/jenkins-cicd-docker" 
-4
         registryCredential = 'dockerhub' 
-5
         dockerImage = '' 
-6
     }
 
  stages {
