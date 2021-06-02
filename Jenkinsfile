@@ -30,7 +30,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+       // withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           sh  'docker push pdockersavant/demowebapp:latest'
            }
                   
