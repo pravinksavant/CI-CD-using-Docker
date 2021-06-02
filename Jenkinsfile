@@ -32,7 +32,7 @@ pipeline {
             steps {
        // withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           sh  'docker push pdockersavant/demowebapp:latest'
-           }
+        //   }
                   
           }
         }
