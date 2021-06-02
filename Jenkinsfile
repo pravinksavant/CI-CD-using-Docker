@@ -35,7 +35,7 @@ pipeline {
            steps { 
                 script { 
                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
+                        sh  'docker push pdockersavant/demowebapp:latest' 
                     }
                 } 
             }
