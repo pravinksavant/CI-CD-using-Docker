@@ -22,7 +22,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t demowebapp:latest .' 
-                sh 'docker tag samplewebapp pdockersavant/demowebapp:latest'
+                sh 'docker tag demowebapp pdockersavant/demowebapp:latest'
                                
           }
         }
